@@ -1,0 +1,23 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: <%= ENV["DATABASE_HOSTNAME"] || "localhost" %>
+  port: 3306
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: myphamtd_new
+
+test:
+  <<: *default
+  database: myphamtd_new
+
+production:
+  <<: *default
+  database: <%= ENV["DATABASE_NAME"] %>
